@@ -20,6 +20,5 @@ namespace PDFGenerator.Infraestructure.Data
     {
       modelBuilder.ApplyConfiguration(new TemplateConfiguration());
     }
-
   }
 }
