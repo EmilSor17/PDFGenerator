@@ -41,11 +41,21 @@ namespace PDFGenerator.Infraestructure.Repositories
       }
     }
 
-    public string GenerateLetterAndSavePdf(RequestLetterData requestLetter)
+    public bool GenerateLetterAndSavePdf(RequestLetterData requestLetter)
     {
-      string htmlContent = CreateHTML(requestLetter);
-      SaveHtmlAsPdf(htmlContent, requestLetter.OutputPath);
-      return "PDF creado con éxito en la ruta " + requestLetter.OutputPath;
+      try
+      {
+        string htmlContent = CreateHTML(requestLetter);
+        SaveHtmlAsPdf(htmlContent, requestLetter.OutputPath);
+        return true;
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine("Error al generar y guardar el PDF:");
+        Console.WriteLine(ex.Message);
+        return false;
+      }
     }
+
   }
 }

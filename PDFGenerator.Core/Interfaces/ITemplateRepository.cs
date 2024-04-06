@@ -4,6 +4,6 @@ namespace PDFGenerator.Core.Interfaces
 {
   public interface ITemplateRepository : IRepository<Template>
   {
-    string GenerateLetterAndSavePdf(RequestLetterData requestLetter);
+    bool GenerateLetterAndSavePdf(RequestLetterData requestLetter);
   }
 }
