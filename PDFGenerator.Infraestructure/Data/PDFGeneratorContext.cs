@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PDFGenerator.Core.Entities;
-using PDFGenerator.Infraestructure.Data.Configurations;
+using PDFGenerator.Models;
+using System.Reflection;
 
 namespace PDFGenerator.Infraestructure.Data
 {
@@ -15,10 +16,12 @@ namespace PDFGenerator.Infraestructure.Data
     {
     }
     public virtual DbSet<Template> Templates { get; set; }
+    public virtual DbSet<Security> Securities { get; set; }
+    public virtual DbSet<Board> Boards { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.ApplyConfiguration(new TemplateConfiguration());
+      modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
   }
 }
